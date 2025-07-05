@@ -17,7 +17,6 @@ import DoctorsList from './components/DoctorList.jsx';
 import ServicesPage from './components/Service.jsx';
 import AboutUsPage from './pages/About.jsx';
 import PaymentPage from './pages/PaymentPage.jsx';
-import AiAssistant from './components/AiAssistant.jsx';
 
 function App() {
   const { isAuthenticated, setIsAuthenticated, user, setUser, setUserRole } =
@@ -101,9 +100,9 @@ function App() {
           <Route
             path="/appointment"
             element={
-              // <ProtectedRoute role="Patient">
-              <BookAppointmentForm />
-              // </ProtectedRoute>
+              <ProtectedRoute role="Patient">
+                <BookAppointmentForm />
+              </ProtectedRoute>
             }
           />
           <Route path="/service" element={<ServicesPage />} />
