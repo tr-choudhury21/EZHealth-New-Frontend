@@ -27,7 +27,9 @@ const BookAppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/v1/doctor/all');
+        const res = await axios.get(
+          'https://ezhealth-server.onrender.com/api/v1/doctor/all'
+        );
         setDoctors(res.data.doctors);
       } catch (err) {
         toast.error('Failed to load doctors.');
@@ -72,7 +74,7 @@ const BookAppointmentForm = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/v1/appointment/book',
+        'https://ezhealth-server.onrender.com/api/v1/appointment/book',
         formData,
         {
           withCredentials: true,
@@ -107,7 +109,7 @@ const BookAppointmentForm = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/v1/appointment/book',
+        'https://ezhealth-server.onrender.com/api/v1/appointment/book',
         formData,
         {
           withCredentials: true,

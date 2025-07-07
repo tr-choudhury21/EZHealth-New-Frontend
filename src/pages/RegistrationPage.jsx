@@ -53,7 +53,7 @@ const RegistrationPage = () => {
         if (profilePic) formData.append('profileImage', profilePic);
 
         res = await axios.post(
-          'http://localhost:5000/api/v1/doctor/register',
+          'https://ezhealth-server.onrender.com/api/v1/doctor/register',
           formData,
           {
             withCredentials: true,
@@ -65,7 +65,7 @@ const RegistrationPage = () => {
       } else {
         // Patient Registration
         res = await axios.post(
-          'http://localhost:5000/api/v1/user/patient/register',
+          'https://ezhealth-server.onrender.com/api/v1/user/patient/register',
           { firstName, lastName, email, phone, age, gender, password },
           {
             withCredentials: true,

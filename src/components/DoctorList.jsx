@@ -11,9 +11,12 @@ const DoctorsList = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/v1/doctor/all', {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          'https://ezhealth-server.onrender.com/api/v1/doctor/all',
+          {
+            withCredentials: true,
+          }
+        );
         const allDoctors = res.data.doctors || [];
         setDoctors(allDoctors);
         setFilteredDoctors(allDoctors);

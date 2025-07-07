@@ -19,7 +19,7 @@ const PatientDashboard = () => {
   const fetchProfile = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/api/v1/user/patient/profile',
+        'https://ezhealth-server.onrender.com/api/v1/user/patient/profile',
         {
           withCredentials: true,
         }
@@ -42,7 +42,7 @@ const PatientDashboard = () => {
   const cancelAppointment = async (appointmentId) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/v1/appointment/${appointmentId}/cancel`,
+        `https://ezhealth-server.onrender.com/api/v1/appointment/${appointmentId}/cancel`,
         {},
         { withCredentials: true }
       );

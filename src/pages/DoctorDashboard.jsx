@@ -20,14 +20,14 @@ const DoctorDashboard = () => {
   const fetchDoctorData = async () => {
     try {
       const profileRes = await axios.get(
-        'http://localhost:5000/api/v1/doctor/me',
+        'https://ezhealth-server.onrender.com/api/v1/doctor/me',
         { withCredentials: true }
       );
       setDoctor(profileRes.data.doctor);
       setFormData(profileRes.data.doctor);
 
       const apptRes = await axios.get(
-        'http://localhost:5000/api/v1/appointment/',
+        'https://ezhealth-server.onrender.com/api/v1/appointment/',
         { withCredentials: true }
       );
 
@@ -46,9 +46,13 @@ const DoctorDashboard = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put('http://localhost:5000/api/v1/doctor/edit', formData, {
-        withCredentials: true,
-      });
+      await axios.put(
+        'https://ezhealth-server.onrender.com/api/v1/doctor/edit',
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       toast.success('Profile updated successfully');
       setEditMode(false);
       fetchDoctorData();
@@ -63,7 +67,7 @@ const DoctorDashboard = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/v1/appointment/${id}/status`,
+        `https://ezhealth-server.onrender.com/api/v1/appointment/${id}/status`,
         { status: newStatus },
         { withCredentials: true }
       );

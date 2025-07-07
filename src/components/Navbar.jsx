@@ -47,9 +47,10 @@ const Navbar = () => {
       let logoutUrl = '';
 
       if (userRole === 'Doctor') {
-        logoutUrl = 'http://localhost:5000/api/v1/doctor/logout';
+        logoutUrl = 'https://ezhealth-server.onrender.com/api/v1/doctor/logout';
       } else {
-        logoutUrl = 'http://localhost:5000/api/v1/user/patient/logout';
+        logoutUrl =
+          'https://ezhealth-server.onrender.com/api/v1/user/patient/logout';
       }
 
       const res = await axios.get(logoutUrl, {
