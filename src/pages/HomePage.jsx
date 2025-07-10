@@ -39,7 +39,7 @@ const HomePage = () => {
             </p>
             <Link to="/appointment">
               <button className="mt-6 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-full hover:bg-orange-500 transition hover:scale-105">
-                Make Appointment
+                Book Appointment
               </button>
             </Link>
           </div>
@@ -83,11 +83,11 @@ const HomePage = () => {
         </div> */}
       </header>
 
+      <DoctorHeader />
       <ServicesPage />
       {/* <AboutUsPage/> */}
       <StepsToBook />
       <ServiceHeader />
-      <DoctorHeader />
       {/* <PredictionHeader/> */}
       <FeaturesSection />
       {/* <FAQComponent/> */}
