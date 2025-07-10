@@ -6,7 +6,8 @@ import axios from 'axios';
 import { AuthContext } from '../auth.jsx';
 
 const RegistrationPage = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated, setUser, setUserRole } =
+    useContext(AuthContext);
   const navigateTo = useNavigate();
 
   const [activeTab, setActiveTab] = useState('Patient');
@@ -24,7 +25,7 @@ const RegistrationPage = () => {
   // Doctor-specific Fields
   const [specialization, setSpecialization] = useState('');
   const [experience, setExperience] = useState('');
-  const [consultationFee, , setConsultationFee] = useState('');
+  const [consultationFee, setConsultationFee] = useState('');
   const [department, setDepartment] = useState('');
   const [profilePic, setProfilePic] = useState(null);
 
@@ -76,13 +77,29 @@ const RegistrationPage = () => {
         );
       }
 
-      toast.success(res.data.message);
-      if (activeTab === 'Doctor') {
-        setIsAuthenticated(false);
-        navigateTo('/login');
+      if (res.data.success) {
+        toast.success(res.data.message);
+        if (activeTab === 'Doctor') {
+          setIsAuthenticated(false);
+          navigateTo('/login');
+        } else {
+          const authRes = await axios.get(
+            'http://localhost:5000/api/v1/user/me',
+            { withCredentials: true }
+          );
+
+          if (authRes.data.success) {
+            setIsAuthenticated(true);
+            setUser(authRes.data.user);
+            setUserRole(authRes.data.user.role);
+            navigateTo('/patient/dashboard');
+          } else {
+            toast.error('Failed to fetch user details after registration.');
+          }
+        }
       } else {
-        setIsAuthenticated(true);
-        navigateTo('/login');
+        toast.error(res.data.message || 'Registration failed.');
+        return;
       }
 
       // Reset all fields
@@ -103,7 +120,7 @@ const RegistrationPage = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to="/" />;
+  // if (isAuthenticated) return <Navigate to="/" />;
 
   return (
     <div className="bg-blue-100 min-h-screen flex justify-center items-center">
