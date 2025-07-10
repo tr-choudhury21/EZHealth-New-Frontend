@@ -118,7 +118,9 @@ const Navbar = () => {
               <button
                 onClick={toggleDropdown}
                 className="px-4 py-2 text-white font-semibold bg-blue-600 rounded-lg hover:bg-orange-500">
-                {user.firstName || 'User'} {`(${userRole})`}
+                {userRole === 'Doctor'
+                  ? `Dr. ${user.firstName}`
+                  : user.firstName || 'User'}
               </button>
 
               {isDropdownOpen && (
@@ -194,7 +196,9 @@ const Navbar = () => {
                 <button
                   onClick={toggleDropdown}
                   className="w-full px-4 py-2 text-white font-semibold bg-blue-600 rounded-lg hover:bg-orange-500">
-                  {user.firstName || 'User'} {`(${userRole})`}
+                  {userRole === 'Doctor'
+                    ? `Dr. ${user.firstName}`
+                    : user.firstName || 'User'}
                 </button>
 
                 {isDropdownOpen && (
