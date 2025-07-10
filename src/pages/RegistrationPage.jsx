@@ -84,7 +84,7 @@ const RegistrationPage = () => {
           navigateTo('/login');
         } else {
           const authRes = await axios.get(
-            'http://localhost:5000/api/v1/user/me',
+            'https://ezhealth-server.onrender.com/api/v1/user/me',
             { withCredentials: true }
           );
 
