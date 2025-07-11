@@ -54,7 +54,7 @@ const RegistrationPage = () => {
         if (profilePic) formData.append('profileImage', profilePic);
 
         res = await axios.post(
-          'https://ezhealth-server.onrender.com/api/v1/doctor/register',
+          'https://ez-health-server.vercel.app/api/v1/doctor/register',
           formData,
           {
             withCredentials: true,
@@ -66,7 +66,7 @@ const RegistrationPage = () => {
       } else {
         // Patient Registration
         res = await axios.post(
-          'https://ezhealth-server.onrender.com/api/v1/user/patient/register',
+          'https://ez-health-server.vercel.app/api/v1/user/patient/register',
           { firstName, lastName, email, phone, age, gender, password },
           {
             withCredentials: true,
@@ -84,7 +84,7 @@ const RegistrationPage = () => {
           navigateTo('/login');
         } else {
           const authRes = await axios.get(
-            'https://ezhealth-server.onrender.com/api/v1/user/me',
+            'https://ez-health-server.vercel.app/api/v1/user/me',
             { withCredentials: true }
           );
 

@@ -12,7 +12,7 @@ const DoctorsList = () => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          'https://ezhealth-server.onrender.com/api/v1/doctor/all',
+          'https://ez-health-server.vercel.app/api/v1/doctor/all',
           {
             withCredentials: true,
           }

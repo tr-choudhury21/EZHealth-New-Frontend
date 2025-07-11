@@ -63,7 +63,7 @@ function App() {
 
       try {
         const res = await axios.get(
-          'https://ezhealth-server.onrender.com/api/v1/user/me',
+          'https://ez-health-server.vercel.app/api/v1/user/me',
           {
             withCredentials: true,
           }

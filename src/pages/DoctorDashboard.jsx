@@ -20,14 +20,14 @@ const DoctorDashboard = () => {
   const fetchDoctorData = async () => {
     try {
       const profileRes = await axios.get(
-        'https://ezhealth-server.onrender.com/api/v1/doctor/me',
+        'https://ez-health-server.vercel.app/api/v1/doctor/me',
         { withCredentials: true }
       );
       setDoctor(profileRes.data.doctor);
       setFormData(profileRes.data.doctor);
 
       const apptRes = await axios.get(
-        'https://ezhealth-server.onrender.com/api/v1/appointment/',
+        'https://ez-health-server.vercel.app/api/v1/appointment/',
         { withCredentials: true }
       );
 
@@ -47,7 +47,7 @@ const DoctorDashboard = () => {
   const handleSave = async () => {
     try {
       await axios.put(
-        'https://ezhealth-server.onrender.com/api/v1/doctor/edit',
+        'https://ez-health-server.vercel.app/api/v1/doctor/edit',
         formData,
         {
           withCredentials: true,
@@ -67,7 +67,7 @@ const DoctorDashboard = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.put(
-        `https://ezhealth-server.onrender.com/api/v1/appointment/${id}/status`,
+        `https://ez-health-server.vercel.app/api/v1/appointment/${id}/status`,
         { status: newStatus },
         { withCredentials: true }
       );
