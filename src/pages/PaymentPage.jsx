@@ -13,7 +13,7 @@ const PaymentPage = () => {
       // console.log('Calling create-order API...');
       const paymentAmount = Number(amount);
       const { data } = await axios.post(
-        'https://ez-health-server.vercel.app/api/v1/payment/create-order',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/payment/create-order`,
         { amount: paymentAmount, appointmentId },
         { withCredentials: true }
       );
@@ -29,7 +29,7 @@ const PaymentPage = () => {
         order_id: data.order.id,
         handler: async function (response) {
           const verifyRes = await axios.post(
-            'https://ez-health-server.vercel.app/api/v1/payment/verify',
+            `${import.meta.env.VITE_SERVER_URL}/api/v1/payment/verify`,
             {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,

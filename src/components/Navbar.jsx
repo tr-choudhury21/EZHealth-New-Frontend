@@ -47,10 +47,11 @@ const Navbar = () => {
       let logoutUrl = '';
 
       if (userRole === 'Doctor') {
-        logoutUrl = 'https://ez-health-server.vercel.app/api/v1/doctor/logout';
+        logoutUrl = `${import.meta.env.VITE_SERVER_URL}/api/v1/doctor/logout`;
       } else {
-        logoutUrl =
-          'https://ez-health-server.vercel.app/api/v1/user/patient/logout';
+        logoutUrl = `${
+          import.meta.env.VITE_SERVER_URL
+        }/api/v1/user/patient/logout`;
       }
 
       const res = await axios.get(logoutUrl, {

@@ -28,7 +28,7 @@ const BookAppointmentForm = () => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(
-          'https://ez-health-server.vercel.app/api/v1/doctor/all'
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/doctor/all`
         );
         setDoctors(res.data.doctors);
       } catch (err) {
@@ -74,7 +74,7 @@ const BookAppointmentForm = () => {
 
     try {
       const res = await axios.post(
-        'https://ez-health-server.vercel.app/api/v1/appointment/book',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/appointment/book`,
         formData,
         {
           withCredentials: true,
@@ -109,7 +109,7 @@ const BookAppointmentForm = () => {
 
     try {
       const res = await axios.post(
-        'https://ez-health-server.vercel.app/api/v1/appointment/book',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/appointment/book`,
         formData,
         {
           withCredentials: true,

@@ -63,7 +63,7 @@ function App() {
 
       try {
         const res = await axios.get(
-          'https://ez-health-server.vercel.app/api/v1/user/me',
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/user/me`,
           {
             withCredentials: true,
           }

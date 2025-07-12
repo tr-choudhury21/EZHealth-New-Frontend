@@ -12,7 +12,7 @@ const AiAssistant = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        'https://ez-health-server.vercel.app/api/v1/ai/symptom-check',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/ai/symptom-check`,
         { message: input }
       );
       setResponse(res.data.response || res.data.message);

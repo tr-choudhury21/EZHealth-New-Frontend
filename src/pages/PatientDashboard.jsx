@@ -19,7 +19,7 @@ const PatientDashboard = () => {
   const fetchProfile = async () => {
     try {
       const res = await axios.get(
-        'https://ez-health-server.vercel.app/api/v1/user/patient/profile',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/user/patient/profile`,
         {
           withCredentials: true,
         }
@@ -42,7 +42,9 @@ const PatientDashboard = () => {
   const cancelAppointment = async (appointmentId) => {
     try {
       await axios.put(
-        `https://ez-health-server.vercel.app/api/v1/appointment/${appointmentId}/cancel`,
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/api/v1/appointment/${appointmentId}/cancel`,
         {},
         { withCredentials: true }
       );

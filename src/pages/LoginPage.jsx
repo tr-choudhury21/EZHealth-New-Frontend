@@ -23,7 +23,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        'https://ez-health-server.vercel.app/api/v1/user/login',
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/user/login`,
         { email, password, role: activeTab },
         {
           withCredentials: true,
