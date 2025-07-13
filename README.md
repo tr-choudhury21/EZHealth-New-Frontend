@@ -67,7 +67,7 @@ EZHealth is a comprehensive **digital health** and **telemedicine platform** tha
 ```
 
 - The UI will be accessible at: http://localhost:5173/
-## Environment Variables
+## 🌐Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
@@ -118,7 +118,7 @@ To run this project, you will need to add the following environment variables to
 
 
 
-## Contributing
+## 🫱🏻‍🫲🏻Contribution
 
 Contributions are always welcome!
 
@@ -141,7 +141,7 @@ Contributions are always welcome!
 
 Please adhere to this project's `code of conduct`.
 
-## Project Link
+## 🔗Project Link
 
 [EZHealth - A Digital Healthcare Platform](https://ez-health-main.vercel.app/)
 
