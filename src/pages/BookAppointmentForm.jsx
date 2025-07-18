@@ -11,8 +11,17 @@ const BookAppointmentForm = () => {
     'Dermatology',
     'Orthopedics',
     'Pediatrics',
+    'Gynecology',
+    'General Medicine',
+    'ENT',
+    'Psychiatry',
+    'Urology',
+    'Gastroenterology',
+    'Ophthalmology',
+    'Dentistry',
   ]);
 
+  const [availableSlots, setAvailableSlots] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [consultationFee, setConsultationFee] = useState(0);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
@@ -68,6 +77,30 @@ const BookAppointmentForm = () => {
       [name]: value,
     }));
   };
+
+  //find available slots based on selected date and time
+  useEffect(() => {
+    const fetchSlots = async () => {
+      if (formData.doctorId && formData.appointmentDate) {
+        try {
+          const res = await axios.get(
+            'http://localhost:5000/api/v1/appointment/available-slots',
+            {
+              params: {
+                doctorId: formData.doctorId,
+                date: formData.appointmentDate,
+              },
+            }
+          );
+          setAvailableSlots(res.data.availableSlots);
+        } catch (err) {
+          toast.error('Failed to fetch time slots');
+        }
+      }
+    };
+
+    fetchSlots();
+  }, [formData.doctorId, formData.appointmentDate]);
 
   const handleBooking = async (e) => {
     e.preventDefault();
@@ -207,14 +240,19 @@ const BookAppointmentForm = () => {
           <label className="block text-gray-700 font-medium mb-2">
             Appointment Time
           </label>
-          <input
-            type="time"
+          <select
             name="appointmentTime"
             value={formData.appointmentTime}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Select Time</option>
+            {availableSlots.map((time, idx) => (
+              <option key={idx} value={time}>
+                {time}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Submit Button */}
