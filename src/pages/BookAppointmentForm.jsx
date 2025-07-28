@@ -84,7 +84,9 @@ const BookAppointmentForm = () => {
       if (formData.doctorId && formData.appointmentDate) {
         try {
           const res = await axios.get(
-            'http://localhost:5000/api/v1/appointment/available-slots',
+            `${
+              import.meta.env.VITE_SERVER_URL
+            }/api/v1/appointment/available-slots`,
             {
               params: {
                 doctorId: formData.doctorId,
